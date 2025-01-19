@@ -1,5 +1,14 @@
-import React from "react";
-import { FaSun, FaMoon,FaCloudSun, FaCloud, FaCloudRain, FaSnowflake, FaCloudShowersHeavy, FaBolt } from 'react-icons/fa';
+import React, { Fragment } from "react";
+import {
+  FaSun,
+  FaMoon,
+  FaCloudSun,
+  FaCloud,
+  FaCloudRain,
+  FaSnowflake,
+  FaCloudShowersHeavy,
+  FaBolt,
+} from "react-icons/fa";
 
 function Forecast({ forecastData }) {
   const getWeatherIcon = (code) => {
@@ -30,12 +39,15 @@ function Forecast({ forecastData }) {
   };
 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+    <Fragment>
+      <h1 className="text-[24px] px-5 pt-5 text-[#333]">
+        Last 3 Day's Forecast
+      </h1>
+      <div className="w-full flex items-center justify-between p-5 flex-wrap mobile:gap-y-5">
         {(forecastData || []).map((day, index) => (
           <div
             key={index}
-            className="bg-white bg-opacity-20 p-4 rounded-xl shadow-md"
+            className="bg-gradient p-4 rounded-xl shadow-md sm:w-[30%] w-full bg-forecast_card_bg bg-no-repeat bottom-0 text-white bg-cover"
           >
             <h3 className="text-lg font-semibold">
               {new Date(day.date).toLocaleDateString("en-US", {
@@ -49,18 +61,20 @@ function Forecast({ forecastData }) {
             <p className="text-lg font-medium">
               {day.minTemp}°C - {day.maxTemp}°C
             </p>
-            <div className="flex items-center text-sm mt-4">
-              <FaSun className="mr-2 text-yellow-500" />{" "}
-              {new Date(day.sunrise).toLocaleTimeString()}
-            </div>
-            <div className="flex items-center text-sm mt-2">
-              <FaMoon className="mr-2 text-indigo-500" />{" "}
-              {new Date(day.sunset).toLocaleTimeString()}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center text-sm mt-4">
+                <FaSun className="mr-2 text-yellow-500" />{" "}
+                {new Date(day.sunrise).toLocaleTimeString()}
+              </div>
+              <div className="flex items-center text-sm mt-2">
+                <FaMoon className="mr-2 text-indigo-500" />{" "}
+                {new Date(day.sunset).toLocaleTimeString()}
+              </div>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </Fragment>
   );
 }
 

@@ -1,66 +1,76 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import formatWeatherData from "../utils/formatWeatherData";
 
-export default function useFetchWeather(location) {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+const DEFAULT_COORDINATES = { latitude: 52.52, longitude: 13.41 };
+const DEFAULT_ERROR_MESSAGE = "Failed to fetch weather data";
 
-  // states for data, loader, and error response
+export default function useFetchWeather() {
+  const [coordinates, setCoordinates] = useState({
+    latitude: null,
+    longitude: null,
+  });
+
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // This useMemo hook is used to memorize api and avoid unnecessary calculations
+  const BASE_URL = useMemo(() => {
+    const { latitude, longitude } = coordinates;
+    const lat = latitude || DEFAULT_COORDINATES.latitude;
+    const lon = longitude || DEFAULT_COORDINATES.longitude;
+
+    return `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=auto&past_days=3`;
+  }, [coordinates]);
+
+  // This useEffect hook Fetches user's geolocation
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          let { latitude, longitude } = position.coords;
-          console.log(
-            "🚀 ~ useEffect ~ latitude, longitude:",
-            latitude,
-            longitude
-          );
-          setLatitude(latitude);
-          setLongitude(longitude);
-        },
-        (err) => {
-          console.log("🚀 ~ useEffect ~ err:", err);
-          setLatitude(52.52); 
-          setLongitude(13.41); 
-        }
-      );
-    } else {
-      console.log("Geolocation is not supported by your browser.");
-      setLatitude(52.52); 
-      setLongitude(13.41); 
-    }
+    const getCoordinates = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          ({ coords }) => {
+            setCoordinates({
+              latitude: coords.latitude,
+              longitude: coords.longitude,
+            });
+          },
+          () => {
+            setCoordinates(DEFAULT_COORDINATES);
+          }
+        );
+      } else {
+        console.warn("Geolocation is not supported by your browser.");
+        setCoordinates(DEFAULT_COORDINATES);
+      }
+    };
+
+    getCoordinates();
   }, []);
 
-  const BASE_URL = `https://api.open-meteo.com/v1/forecast?latitude=${
-    latitude || 52.52
-  }&longitude=${
-    longitude || 13.41
-  }&current=temperature_2m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=auto&past_days=3`;
+  // This useEffect hook Fetches user's weather data
 
   useEffect(() => {
-    if (latitude && longitude) {
-      const fetchData = async () => {
+    if (coordinates.latitude && coordinates.longitude) {
+      const fetchWeatherData = async () => {
+        setLoading(true);
+        setError(null);
+
         try {
-          setLoading(true);
           const response = await axios.get(BASE_URL);
-          const formatData = formatWeatherData(response?.data);
-          setData(formatData);
-          console.log("🚀 ~ fetchData ~ response:", response?.data);
-        } catch (error) {
-          setError("Failed to fetch weather data");
+          const formattedData = formatWeatherData(response?.data);
+          setData(formattedData);
+        } catch (err) {
+          console.error("Error fetching weather data:", err);
+          setError(DEFAULT_ERROR_MESSAGE);
         } finally {
           setLoading(false);
         }
       };
-      fetchData();
+
+      fetchWeatherData();
     }
-  }, [latitude, longitude]);
+  }, [BASE_URL]);
 
   return { data, loading, error };
 }

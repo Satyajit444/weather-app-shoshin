@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  src: url("/public/assets/fonts/inter_regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500; /* Medium */
+  src: url("/public/assets/fonts/inter_medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600; /* SemiBold */
+  src: url("/public/assets/fonts/inter_semibold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  src: url("/public/assets/fonts/inter_bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lexend";
+  font-weight: 700; /* Bold */
+  font-style: normal;
+  src: url("/public/assets/fonts/Lexend-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lexend";
+  font-weight: 600; /* SemiBold */
+  font-style: normal;
+  src: url("/public/assets/fonts/Lexend-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lexend";
+  font-weight: 400; /* Regular */
+  font-style: normal;
+  src: url("/public/assets/fonts/Lexend-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lexend";
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  src: url("/public/assets/fonts/Lexend-Medium.woff2") format("woff2");
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+  ::-webkit-scrollbar-thumb {
+  background: #888; 
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  
+  background: #555; 
+} 
+.light-bg-gradient {
+  background-image: linear-gradient(
+    45deg,
+    #ff9a9e 0%,
+    #fad0c4 99%,
+    #fad0c4 100%
+  );
+}
+
+.dark-bg-gradient {
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.bg-gradient {
+  background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+}
+
+html,
+body {
+  font-family: Lexend, sans-serif;
+}
