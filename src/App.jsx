@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import WeatherCard from "./components/weatherCard/WeatherCard";
 
 function App() {
   return (
-    <div>App</div>
-  )
+    <>
+      <WeatherCard />
+    </>
+  );
 }
 
-export default App
+export default App;

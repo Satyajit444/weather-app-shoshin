@@ -1,8 +1,9 @@
 import React from 'react'
+import style from './WeatherCard.module.css'
 
 function WeatherCard() {
   return (
-    <div>WeatherCard</div>
+    <div className={style['weather-ctn']}>WeatherCard</div>
   )
 }
 
