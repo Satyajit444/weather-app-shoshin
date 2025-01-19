@@ -1,7 +1,9 @@
 function formatWeatherData(data) {
+  console.log("🚀 ~ formatWeatherData ~ area:", data.timezone);
   const currentWeather = {
     temperature: data.current.temperature_2m,
     time: data.current.time,
+    location: data.timezone,
   };
   const forecast = data.daily.time.slice(0, 3).map((date, index) => ({
     date,
