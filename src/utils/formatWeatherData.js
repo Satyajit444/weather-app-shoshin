@@ -35,7 +35,7 @@ function formatWeatherData(data) {
   const highlightsData = [
     {
       parameter: "Sunshine Duration",
-      value: `${todaysHighlight.sunshine_duration} hours`,
+      value: `${(todaysHighlight.sunshine_duration/3600).toFixed(2)} hours`,
       status:
         todaysHighlight.sunshine_duration > 8
           ? "Sunny"
