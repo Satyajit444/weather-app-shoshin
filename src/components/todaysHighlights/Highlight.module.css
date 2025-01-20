@@ -1,0 +1,7 @@
+.hl-ctn {
+  @apply w-full flex flex-wrap gap-4 justify-between;
+}
+.hl-card {
+  @apply p-4 rounded-xl shadow flex items-center justify-between 
+    w-full sm:w-[48%] lg:w-[23%];
+}

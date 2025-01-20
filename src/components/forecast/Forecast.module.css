@@ -1,0 +1,12 @@
+.title {
+  @apply text-[24px] px-5 pt-5;
+}
+.forecast-ctn {
+  @apply w-full flex items-center justify-between p-5 flex-wrap mobile:gap-y-5;
+}
+.forecast-card {
+  @apply  p-4 rounded-xl shadow-md sm:w-[30%] w-full  bg-no-repeat bottom-0 text-white bg-cover;
+}
+.weather-icon{
+    @apply flex items-center justify-center my-4 text-4xl
+}

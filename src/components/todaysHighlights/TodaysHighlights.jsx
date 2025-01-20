@@ -1,7 +1,7 @@
 import React from "react";
+import style from "./Highlight.module.css";
 
 function TodaysHighlights({ todaysHighlight, isDay }) {
-  console.log("🚀 ~ TodaysHighlights ~ todaysHighlight:", todaysHighlight);
   const getImageByIcon = (icon) => {
     switch (icon) {
       case "sd":
@@ -19,15 +19,14 @@ function TodaysHighlights({ todaysHighlight, isDay }) {
   return (
     <div className="p-5 w-full">
       <h1 className="text-[24px] mb-5">Today's Highlights</h1>
-      <div className="w-full flex flex-wrap gap-4 justify-between">
+      <div className={style["hl-ctn"]}>
         {(todaysHighlight || []).map((highlight, index) => {
           return (
             <div
               key={index}
               className={` ${
                 isDay ? "bg-white text-[#333]" : "night-card-bg text-white"
-              }  p-4 rounded-xl shadow flex items-center justify-between 
-                   w-full sm:w-[48%] lg:w-[23%]`}
+              } ${style["hl-card"]}  `}
             >
               <div className="flex flex-col gap-y-5">
                 <h3 className="opacity-40 whitespace-nowrap truncate">

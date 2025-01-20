@@ -1,5 +1,4 @@
 function formatWeatherData(data) {
-  console.log("🚀 ~ formatWeatherData ~ area:", data);
 
   const today = new Date().toISOString().split("T")[0];
   const todayIndex = data.daily.time.findIndex((date) => date === today) + 1;

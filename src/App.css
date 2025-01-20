@@ -90,3 +90,15 @@ html,
 body {
   font-family: Lexend, sans-serif;
 }
+.app-ctn {
+  @apply flex items-center justify-between w-full lg:h-full h-fit rounded-2xl lg:flex-row flex-col lg:overflow-hidden;
+}
+.location {
+  @apply bg-light_bg bg-no-repeat opacity-70 bg-cover bg-center rounded-xl overflow-hidden light-bg-gradient;
+}
+.location-title {
+  @apply text-2xl mb-2 w-full rounded-xl p-8 text-white;
+}
+.app-top-ctn {
+  @apply h-full lg:w-[20%] w-full p-6 flex flex-col justify-between;
+}

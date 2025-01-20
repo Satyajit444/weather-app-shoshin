@@ -15,7 +15,6 @@ function WeatherCard({ currentWeather }) {
           alt={currentWeather.isDay ? "Daytime Weather" : "Nighttime Weather"}
         />
       ) : (
-        // Optionally show a loading spinner or placeholder image while the data is being fetched
         <img src="/assets/loading.gif" alt="Loading weather..." />
       )}
 
