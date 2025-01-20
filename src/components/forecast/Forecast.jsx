@@ -2,41 +2,36 @@ import React, { Fragment } from "react";
 import {
   FaSun,
   FaMoon,
-  FaCloudSun,
-  FaCloud,
-  FaCloudRain,
-  FaSnowflake,
-  FaCloudShowersHeavy,
-  FaBolt,
 } from "react-icons/fa";
+import GetWeatherIcon from "./GetWeatherIcon";
 
 function Forecast({ forecastData }) {
-  const getWeatherIcon = (code) => {
-    switch (true) {
-      case code === 0:
-        return <FaSun />;
-      case [1, 2, 3].includes(code):
-        return <FaCloudSun />;
-      case [45, 48].includes(code):
-        return <FaCloud />;
-      case [51, 53, 55].includes(code):
-        return <FaCloudRain />;
-      case [61, 63, 65].includes(code):
-        return <FaCloudRain />;
-      case [71, 73, 75, 77].includes(code):
-        return <FaSnowflake />;
-      case [80, 81, 82].includes(code):
-        return <FaCloudShowersHeavy />;
-      case [85, 86].includes(code):
-        return <FaSnowflake />;
-      case code === 95:
-        return <FaBolt />;
-      case [96, 99].includes(code):
-        return <FaBolt />;
-      default:
-        return <span>❓</span>;
-    }
-  };
+  // const getWeatherIcon = (code) => {
+  //   switch (true) {
+  //     case code === 0:
+  //       return <FaSun />;
+  //     case [1, 2, 3].includes(code):
+  //       return <FaCloudSun />;
+  //     case [45, 48].includes(code):
+  //       return <FaCloud />;
+  //     case [51, 53, 55].includes(code):
+  //       return <FaCloudRain />;
+  //     case [61, 63, 65].includes(code):
+  //       return <FaCloudRain />;
+  //     case [71, 73, 75, 77].includes(code):
+  //       return <FaSnowflake />;
+  //     case [80, 81, 82].includes(code):
+  //       return <FaCloudShowersHeavy />;
+  //     case [85, 86].includes(code):
+  //       return <FaSnowflake />;
+  //     case code === 95:
+  //       return <FaBolt />;
+  //     case [96, 99].includes(code):
+  //       return <FaBolt />;
+  //     default:
+  //       return <span>❓</span>;
+  //   }
+  // };
 
   return (
     <Fragment>
@@ -56,7 +51,7 @@ function Forecast({ forecastData }) {
             </h3>
             <p className="text-sm">{new Date(day.date).toLocaleDateString()}</p>
             <div className="flex items-center justify-center my-4 text-4xl">
-              {getWeatherIcon(day.weatherCode)}
+            <GetWeatherIcon code={day.weatherCode} options/>
             </div>
             <p className="text-lg font-medium">
               {day.minTemp}°C - {day.maxTemp}°C

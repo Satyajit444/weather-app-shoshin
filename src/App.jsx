@@ -6,14 +6,12 @@ import "./App.css";
 import TodaysHighlights from "./components/todaysHighlights/TodaysHighlights";
 function App() {
   const { data, loading, error } = useFetchWeather();
-  const isDaytime = new Date().getHours() >= 6 && new Date().getHours() <= 18;
 
   return (
     <div
       // className={`min-h-screen ${
-      //   !isDaytime ? "light-bg-gradient" : "dark-bg-gradient"
-      // } text-white flex flex-col items-center p-4`}
-      className="h-screen bg-[#d6d7db] sm:p-8 w-full "
+      //   !data?.currentWeather?.isDay ? "bg-[#d6d7db]" : "dark-bg-gradient"
+      // } sm:p-8 w-full h-screen`}
     >
       <div className="flex items-center justify-between w-full h-full rounded-2xl mobile:flex-col sm:overflow-hidden">
         <div className="h-full bg-white sm:w-[20%] w-full p-6 flex flex-col justify-between">
