@@ -21,7 +21,7 @@ export default function useFetchWeather() {
     const lat = latitude || DEFAULT_COORDINATES.latitude;
     const lon = longitude || DEFAULT_COORDINATES.longitude;
 
-    return `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,is_day,weather_code,wind_speed_10m,rain,precipitation,relative_humidity_2m,apparent_temperature,wind_direction_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max,wind_speed_10m_max&timezone=auto&past_days=3`;
+    return `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,is_day,weather_code,wind_speed_10m,rain,precipitation,relative_humidity_2m,apparent_temperature,wind_direction_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,sunshine_duration,precipitation_probability_max,wind_speed_10m_max&hourly=&timezone=auto&past_days=3`;
   }, [coordinates]);
 
   // This useEffect hook Fetches user's geolocation
