@@ -10,7 +10,7 @@ function App() {
   return (
     <div
       // className={`min-h-screen ${
-      //   !data?.currentWeather?.isDay ? "bg-[#d6d7db]" : "dark-bg-gradient"
+      //   data?.currentWeather?.isDay ? "light-bg-gradient" : "dark-bg-gradient"
       // } sm:p-8 w-full h-screen`}
     >
       <div className="flex items-center justify-between w-full h-full rounded-2xl mobile:flex-col sm:overflow-hidden">
