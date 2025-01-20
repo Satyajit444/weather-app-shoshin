@@ -115,6 +115,6 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
-  opacity: 0.5; /* Adjust opacity here */
-  z-index: 1; /* Keep it behind the content */
+  opacity: 0.4; /* Adjust opacity here */
+  @apply w-[90%] mx-auto z-10;
 }
