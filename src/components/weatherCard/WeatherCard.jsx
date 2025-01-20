@@ -1,15 +1,24 @@
 import React from "react";
-import style from "./WeatherCard.module.css";
 import GetWeatherIcon from "../common/WeatherIcon";
 import SunRiseAndSet from "../common/SunRiseAndSet";
 
 function WeatherCard({ currentWeather }) {
-  console.log(currentWeather?.weatherCode);
   const options = { size: 50, color: "dark-bg-gradient" };
 
   return (
     <div className="text-center space-y-4 mb-8">
-      <img src="/assets/weather.svg" alt="" />
+      {currentWeather && currentWeather.isDay !== undefined ? (
+        <img
+          src={
+            currentWeather.isDay ? "/assets/weather.svg" : "/assets/night.png"
+          }
+          alt={currentWeather.isDay ? "Daytime Weather" : "Nighttime Weather"}
+        />
+      ) : (
+        // Optionally show a loading spinner or placeholder image while the data is being fetched
+        <img src="/assets/loading.gif" alt="Loading weather..." />
+      )}
+
       <GetWeatherIcon
         code={currentWeather?.weatherCode}
         description={true}

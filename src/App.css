@@ -55,17 +55,16 @@
 ::-webkit-scrollbar {
   width: 7px;
 }
-  ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
-  ::-webkit-scrollbar-thumb {
-  background: #888; 
-    border-radius:10px;
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  
-  background: #555; 
-} 
+  background: #555;
+}
 .light-bg-gradient {
   background-image: linear-gradient(
     45deg,
@@ -81,7 +80,12 @@
 .bg-gradient {
   background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
 }
-
+.night-bg {
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+.night-card-bg {
+  background-image: linear-gradient(to right, #868f96 0%, #596164 100%);
+}
 html,
 body {
   font-family: Lexend, sans-serif;

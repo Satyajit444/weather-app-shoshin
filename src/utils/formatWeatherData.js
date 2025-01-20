@@ -26,16 +26,61 @@ function formatWeatherData(data) {
     rain: data.current.rain,
   };
 
-
-
   const todaysHighlight = {
     sunshine_duration: data.daily.sunshine_duration[todayIndex - 1],
     maxTemp: data.daily.temperature_2m_max[todayIndex - 1],
-    precipitation:data.daily.precipitation_probability_max[todayIndex - 1],
-    windSpeed:data.daily.wind_speed_10m_max[todayIndex - 1]
-
+    precipitation: data.daily.precipitation_probability_max[todayIndex - 1],
+    windSpeed: data.daily.wind_speed_10m_max[todayIndex - 1],
   };
-  return { currentWeather, forecast, todaysHighlight };
+
+  const highlightsData = [
+    {
+      parameter: "Sunshine Duration",
+      value: `${todaysHighlight.sunshine_duration} hours`,
+      status:
+        todaysHighlight.sunshine_duration > 8
+          ? "Sunny"
+          : todaysHighlight.sunshine_duration > 4
+          ? "Partly Sunny"
+          : "Cloudy",
+      icon: "sd",
+    },
+    {
+      parameter: "Max Temperature",
+      value: `${todaysHighlight.maxTemp}°C`,
+      status:
+        todaysHighlight.maxTemp > 30
+          ? "Hot"
+          : todaysHighlight.maxTemp > 15
+          ? "Warm"
+          : "Cool",
+      icon: "mt",
+    },
+    {
+      parameter: "Precipitation",
+      value: `${todaysHighlight.precipitation}%`,
+      status:
+        todaysHighlight.precipitation > 70
+          ? "High"
+          : todaysHighlight.precipitation > 40
+          ? "Moderate"
+          : "Low",
+      icon: "pt",
+    },
+    {
+      parameter: "Wind Speed",
+      value: `${todaysHighlight.windSpeed} km/h`,
+      status:
+        todaysHighlight.windSpeed > 50
+          ? "Strong"
+          : todaysHighlight.windSpeed > 20
+          ? "Moderate"
+          : "Calm",
+      icon: "ws",
+    },
+  ];
+
+  return { currentWeather, forecast, highlightsData };
 }
 
 export default formatWeatherData;

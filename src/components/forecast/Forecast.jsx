@@ -7,7 +7,7 @@ function Forecast({ forecastData }) {
 
   return (
     <Fragment>
-      <h1 className="text-[24px] px-5 pt-5 text-[#333]">
+      <h1 className="text-[24px] px-5 pt-5">
         Last 3 Day's Forecast
       </h1>
       <div className="w-full flex items-center justify-between p-5 flex-wrap mobile:gap-y-5">
