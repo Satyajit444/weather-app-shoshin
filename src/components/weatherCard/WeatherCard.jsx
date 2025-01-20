@@ -5,7 +5,7 @@ import SunRiseAndSet from "../common/SunRiseAndSet";
 
 function WeatherCard({ currentWeather }) {
   console.log(currentWeather?.weatherCode);
-  const options = { size: 50, color: "black" };
+  const options = { size: 50, color: "dark-bg-gradient" };
 
   return (
     <div className="text-center space-y-4 mb-8">

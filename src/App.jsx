@@ -24,7 +24,7 @@ function App() {
         </div>
         <div className="bg-[#f7f6f9] w-full h-full p-6">
           <Forecast forecastData={data?.forecast} />
-          <TodaysHighlights />
+          <TodaysHighlights todaysHighlight={data?.todaysHighlight} />
         </div>
       </div>
     </div>

@@ -29,6 +29,11 @@ function formatWeatherData(data) {
 
 
   const todaysHighlight = {
+    sunshine_duration: data.daily.sunshine_duration[todayIndex - 1],
+    maxTemp: data.daily.temperature_2m_max[todayIndex - 1],
+    precipitation:data.daily.precipitation_probability_max[todayIndex - 1],
+    windSpeed:data.daily.wind_speed_10m_max[todayIndex - 1]
+
   };
   return { currentWeather, forecast, todaysHighlight };
 }
