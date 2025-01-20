@@ -17,7 +17,7 @@ function TodaysHighlights({ todaysHighlight, isDay }) {
     }
   };
   return (
-    <div className="p-5 w-full">
+    <div className="p-5 w-full z-10 relative">
       <h1 className="text-[24px] mb-5">Today's Highlights</h1>
       <div className={style["hl-ctn"]}>
         {(todaysHighlight || []).map((highlight, index) => {

@@ -5,16 +5,12 @@ import Forecast from "./components/forecast/Forecast";
 import "./App.css";
 import TodaysHighlights from "./components/todaysHighlights/TodaysHighlights";
 import Loader from "./components/common/Loader";
+import Error from "./components/common/Error";
 function App() {
   const { data, loading, error } = useFetchWeather();
-  const isDay = data?.currentWeather?.isDay || undefined;
+  const isDay = data?.currentWeather?.isDay || null;
   return (
-    <div
-      className={`lg:p-8 w-full h-screen bg-slate-200 `}
-      // className={`min-h-screen ${
-      //   data?.currentWeather?.isDay ? "light-bg-gradient" : "dark-bg-gradient"
-      // } sm:p-8 w-full h-screen`}
-    >
+    <div className={`lg:p-8 w-full h-screen bg-slate-200 `}>
       {!loading ? (
         <div className="app-ctn">
           <div
@@ -30,7 +26,7 @@ function App() {
           <div
             className={` ${
               isDay ? "bg-[#f7f6f9] text-[#333]" : "night-bg text-white"
-            } w-full h-full p-6`}
+            } w-full h-full p-6 bg-cloud-opacity z-10`}
           >
             <Forecast forecastData={data?.forecast} />
             <TodaysHighlights

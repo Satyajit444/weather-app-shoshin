@@ -4,7 +4,7 @@ import SunRiseAndSet from "../common/SunRiseAndSet";
 import style from "./Forecast.module.css";
 function Forecast({ forecastData }) {
   return (
-    <Fragment>
+    <div className="z-50 relative">
       <h1 className={style["title"]}>Last 3 Day's Forecast</h1>
       <div className={`${style["forecast-ctn"]}`}>
         {(forecastData || []).map((day, index) => (
@@ -25,7 +25,7 @@ function Forecast({ forecastData }) {
           </div>
         ))}
       </div>
-    </Fragment>
+    </div>
   );
 }
 

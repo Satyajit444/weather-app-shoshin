@@ -102,3 +102,19 @@ body {
 .app-top-ctn {
   @apply h-full lg:w-[20%] w-full p-6 flex flex-col justify-between;
 }
+
+.bg-cloud-opacity {
+  position: relative;
+}
+
+.bg-cloud-opacity::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* Full coverage */
+  background-image: url('/public/assets/cld.png'); /* Replace with your image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  opacity: 0.5; /* Adjust opacity here */
+  z-index: 1; /* Keep it behind the content */
+}
